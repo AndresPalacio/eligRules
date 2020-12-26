@@ -28,20 +28,6 @@ A key dependency is Drools, from org.drools. The pom.xml specifies the version o
 <drools-version>7.47.0.Final</drools-version>
 ```
 
-which is also used to direct the Maven compiler using the kie-maven-plugin (some lines removed for brevity):
-
-```xml
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.kie</groupId>
-        <artifactId>kie-maven-plugin</artifactId>
-        <version>${drools-version}</version>
-      </plugin>
-```
-
-Upgrades to Drools or the Maven compiler can be managed here.
 
 ## 3. Build, Test, Deploy
 
@@ -57,7 +43,7 @@ Upgrades to Drools or the Maven compiler can be managed here.
 
 ```mvn package```
 
-This will create a .jar for the version specified in pom.xml of eligRules. Modify that version in the pom.xml section as shown:
+This will create a fat .jar (i.e. one with all dependencies included) for the version specified in pom.xml of eligRules. (TODO: figure out a way to make fat jar optional) Modify that version in the pom.xml section as shown:
 
 ```xml
 <version>0.0.1-SNAPSHOT</version>
@@ -66,3 +52,7 @@ This will create a .jar for the version specified in pom.xml of eligRules. Modif
 Explore the jar's contents with the jar command:
 
 ```jar tvf target/eligRules-0.0.1-SNAPSHOT```
+
+### Deploy to AWS Lambda:
+
+```mvn package shade:shade```
