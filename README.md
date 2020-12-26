@@ -22,6 +22,27 @@ Maven:
 
 This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies.
 
+A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools as:
+
+```xml
+<drools-version>7.47.0.Final</drools-version>
+```
+
+which is also used to direct the Maven compiler using the kie-maven-plugin (some lines removed for brevity):
+
+```xml
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-maven-plugin</artifactId>
+        <version>${drools-version}</version>
+      </plugin>
+```
+
+Upgrades to Drools or the Maven compiler can be managed here.
+
 ## 3. Build, Test, Deploy
 
 ### Build
