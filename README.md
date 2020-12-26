@@ -20,14 +20,11 @@ Maven:
 
 ## 2. Dependencies:
 
-This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies.
-
-A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools as:
+This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies. A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools as:
 
 ```xml
 <drools-version>7.47.0.Final</drools-version>
 ```
-
 
 ## 3. Build, Test, Deploy
 
@@ -43,7 +40,7 @@ A key dependency is Drools, from org.drools. The pom.xml specifies the version o
 
 ```mvn package```
 
-This will create a fat .jar (i.e. one with all dependencies included) for the version specified in pom.xml of eligRules. (TODO: figure out a way to make fat jar optional) Modify that version in the pom.xml section as shown:
+This will create a .jar for the version specified in pom.xml of eligRules. Modify that version in the pom.xml section as shown:
 
 ```xml
 <version>0.0.1-SNAPSHOT</version>
@@ -53,6 +50,6 @@ Explore the jar's contents with the jar command:
 
 ```jar tvf target/eligRules-0.0.1-SNAPSHOT```
 
-### Deploy to AWS Lambda:
+### Deploy ready for AWS Lambda:
 
 ```mvn package shade:shade```

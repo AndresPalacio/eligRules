@@ -16,7 +16,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <dependencyManagement>
+  <!-- <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.drools</groupId>
@@ -26,7 +26,7 @@
         <scope>import</scope>
       </dependency>
     </dependencies>
-  </dependencyManagement>
+  </dependencyManagement> -->
 
   <dependencies>
 
@@ -36,12 +36,12 @@
         <version>${drools-version}</version>
     </dependency>
 
-    <!-- <dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit-version}</version>
       <scope>test</scope>
-    </dependency> -->
+    </dependency>
     
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -55,6 +55,7 @@
         <artifactId>aws-lambda-java-core</artifactId>
         <version>${aws-lambda-version}</version>
     </dependency>
+
   </dependencies>
     <build>
         <finalName>lambda</finalName>
