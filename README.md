@@ -32,6 +32,16 @@ This project is built with Maven. Dependencies can be viewed and modified in pom
 
 ```mvn test```
 
-### Deploy
+### Deploy (package for deployment):
 
-```mvn deploy```
+```mvn package```
+
+This will create a .jar for the version specified in pom.xml of eligRules. Modify that version in the pom.xml section as shown:
+
+```xml
+<version>0.0.1-SNAPSHOT</version>
+```
+
+Explore the jar's contents with the jar command:
+
+```jar tvf target/eligRules-0.0.1-SNAPSHOT```
