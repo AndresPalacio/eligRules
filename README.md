@@ -18,6 +18,10 @@ Maven:
 
 ```apt install maven```
 
+If you want to use the AWS Lambda deployment:
+
+```apt install awscli```
+
 ## 2. Dependencies:
 
 This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies. A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools as:
@@ -53,3 +57,12 @@ Explore the jar's contents with the jar command:
 ### Deploy ready for AWS Lambda:
 
 ```mvn package shade:shade```
+
+***Configure your AWS account, set up an IAM, and configure your workspace on the aws console. Create at least one key-pair with rights to create, modify and execute a lambda (AWSLambda_FullAccess is about as high as you'd need). Then configure that key pair using aws configure.***
+
+TODO: clean this section up; for now just logging it... Run the following to update or create the lambda. Note that you'll have to replace the ARN, even if configured already (that's another TODO mentioned in the shell script):
+
+```chmod 777 ./aws-deploy.sh```
+```./aws-deploy.sh```
+
+
