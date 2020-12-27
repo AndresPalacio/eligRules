@@ -25,8 +25,6 @@ public class Handler implements RequestStreamHandler{
 	@Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
         
-        LOG.info("in handleRequest()");
-        
         KieServices ks = KieServices.Factory.get();
         KieContainer kContainer = ks.getKieClasspathContainer();
         KieSession kSession = kContainer.newKieSession("ksession-rules");
@@ -34,7 +32,5 @@ public class Handler implements RequestStreamHandler{
         Demographics demo = new Demographics(66);
         kSession.insert(demo);
         kSession.fireAllRules();
-        
-        LOG.info("completed handleRequest()");
     }
 }
