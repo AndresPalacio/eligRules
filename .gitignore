@@ -30,3 +30,5 @@ target/
 .project
 .settings/
 
+# swp files left over by vim
+*.swp

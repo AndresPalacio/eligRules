@@ -1,9 +1,0 @@
-package com.r1.eligRules
-import Demographics
-
-rule "Medicare Eligible"
-    when
-        variable : Demographics ( age  >= 65, true : false )
-    then
-        variavel.getConsole().println( textoLocal );
-end

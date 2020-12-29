@@ -1,13 +1,13 @@
 package com.r1.eligRules;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import static org.junit.Assert.*;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.drools.core.time.SessionPseudoClock;
+import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieBaseConfiguration;
 import org.kie.api.KieServices;
@@ -20,24 +20,14 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.KieSessionConfiguration;
 import org.kie.api.runtime.conf.ClockTypeOption;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
+public class RuleTest {
+    static final Logger LOG = LoggerFactory.getLogger(RuleTest.class);
 
-public class Handler implements RequestStreamHandler {
-	
-    static final Logger LOG = LoggerFactory.getLogger(Handler.class);
-
-    public static void main(String[] args) throws Exception {
-        new Handler().handleRequest(System.in, System.out, null);
-    }
-    
-	@Override
-    public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
-        
+    @Test
+    public void test() {
         KieServices kieServices = KieServices.Factory.get();
 
         KieContainer kContainer = kieServices.getKieClasspathContainer();
@@ -77,6 +67,12 @@ public class Handler implements RequestStreamHandler {
         session.insert(mBlue);
         session.fireAllRules();
 
-        LOG.info("Final checks, mem size is " + session.getObjects().size());
+        LOG.info("Final checks");
+
+        assertEquals("Size of object in Working Memory is 3", 3, session.getObjects().size());
+        assertTrue("contains red", check.contains("red"));
+        assertTrue("contains green", check.contains("green"));
+        assertTrue("contains blue", check.contains("blue"));
+
     }
 }
