@@ -6,6 +6,6 @@
 	if [[ "$?" -ne 0 ]]
 	then
 
-	aws lambda create-function --function-name eligRules --runtime java11 --role arn:aws:iam::259437231177:role/lambda-full-access --handler com.r1.eligRules.Handler::handleRequest --zip-file fileb://`pwd`/target/lambda.jar --timeout 15
+	aws lambda create-function --function-name eligRules --runtime java8 --role arn:aws:iam::259437231177:role/lambda-full-access --handler com.r1.eligRules.Handler::handleRequest --zip-file fileb://`pwd`/target/lambda.jar --timeout 15 --memory-size 512
 
 	fi

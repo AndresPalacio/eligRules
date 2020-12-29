@@ -15,8 +15,6 @@
 
 package com.r1.eligRules;
 
-global java.util.Set controlSet;
-
 rule "will execute per each Measurement having ID color"
 no-loop
 when

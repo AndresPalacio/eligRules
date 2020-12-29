@@ -18,8 +18,6 @@ import org.kie.api.definition.KiePackage;
 import org.kie.api.definition.rule.Rule;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.KieSessionConfiguration;
-import org.kie.api.runtime.conf.ClockTypeOption;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,10 +57,6 @@ public class Handler implements RequestStreamHandler {
         LOG.info("Creating kieSession");
         KieSession session = kieBase.newKieSession();
 
-        LOG.info("Populating globals");
-        Set<String> check = new HashSet<String>();
-        session.setGlobal("controlSet", check);
-
         LOG.info("Now running data");
 
         Measurement mRed= new Measurement("color", "red");
@@ -76,7 +70,5 @@ public class Handler implements RequestStreamHandler {
         Measurement mBlue= new Measurement("color", "blue");
         session.insert(mBlue);
         session.fireAllRules();
-
-        LOG.info("Final checks, mem size is " + session.getObjects().size());
     }
 }
