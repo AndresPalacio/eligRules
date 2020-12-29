@@ -27,8 +27,10 @@ If you want to use the AWS Lambda deployment:
 This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies. A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools as:
 
 ```xml
-<drools-version>7.47.0.Final</drools-version>
+<drools-version>6.5.0.Final</drools-version>
 ```
+
+The latest version of Drools is 7.47.0.Final, which isn't compiling (test are failing) on this project yet, so I guessed that 6.5.0.Final was good enough. TODO - figure out how to get current!!
 
 ## 3. Build, Test, Deploy
 
