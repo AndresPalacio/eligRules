@@ -24,13 +24,16 @@ If you want to use the AWS Lambda deployment:
 
 ## 2. Dependencies:
 
-This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies. A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools as:
+This project is built with Maven. Dependencies can be viewed and modified in pom.xml. Alternatively, you can use the Eclipse or VS Code Maven interfaces to manage your dependencies. A key dependency is Drools, from org.drools. The pom.xml specifies the version of drools in a parent node:
 
 ```xml
-<drools-version>6.5.0.Final</drools-version>
+<parent>
+    <groupId>org.drools</groupId>
+    <artifactId>drools</artifactId>
+    <version>7.47.0.Final</version>
+</parent>
 ```
 
-The latest version of Drools is 7.47.0.Final, which isn't compiling (test are failing) on this project yet, so I guessed that 6.5.0.Final was good enough. TODO - figure out how to get current!!
 
 ## 3. Build, Test, Deploy
 
@@ -41,6 +44,14 @@ The latest version of Drools is 7.47.0.Final, which isn't compiling (test are fa
 ### Test
 
 ```mvn test```
+
+### Run a local execution
+
+This command is temporary; it simply runs a sanity test to validate that maven, drools, and java are playing nicely together.
+
+```sh
+mvn exec:java -Dexec.mainClass="com.r1.eligRules.examples.DroolsExamplesApp"
+```
 
 ### Deploy (package for deployment):
 
@@ -56,7 +67,7 @@ Explore the jar's contents with the jar command:
 
 ```jar tvf target/eligRules-0.0.1-SNAPSHOT```
 
-### Deploy ready for AWS Lambda:
+### Deploy (package for AWS deployment):
 
 ```mvn package shade:shade```
 
