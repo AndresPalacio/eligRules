@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>drools</artifactId>
+    <groupId>org.drools</groupId>
+    <version>7.47.0.Final</version>
+    <relativePath>../pom.xml/pom.xml</relativePath>
+  </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.r1</groupId>
   <artifactId>eligRules</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-    <resources>
-      <resource>
-        <targetPath>.</targetPath>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>META-INF/kmodule.xml</include>
-          <include>com/r1/eligRules/BaseMedicare.drt</include>
-        </includes>
-      </resource>
-    </resources>
     <finalName>lambda</finalName>
   </build>
   <dependencies>
@@ -30,6 +26,22 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.10.19</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>objenesis</artifactId>
+          <groupId>org.objenesis</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
   <properties>
     <aws-lambda-version>1.2.0</aws-lambda-version>
@@ -38,6 +50,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit-version>4.13.1</junit-version>
     <slf4j-version>1.7.26</slf4j-version>
-    <drools-version>6.5.0.Final</drools-version>
+    <enforcer.skip>true</enforcer.skip>
   </properties>
 </project>
+

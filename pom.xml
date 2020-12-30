@@ -23,8 +23,9 @@
     <enforcer.skip>true</enforcer.skip>
   </properties>
 
-  <dependencies>
-<dependency>
+<dependencies>
+
+    <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-api</artifactId>
     </dependency>
@@ -73,7 +74,7 @@
         <version>${aws-lambda-version}</version>
     </dependency>
 
-  </dependencies>
+</dependencies>
     <build>
         <finalName>lambda</finalName>
     </build>

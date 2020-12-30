@@ -2,13 +2,10 @@ package com.r1.eligRules;
 
 import static org.junit.Assert.*;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.kie.api.KieServices;
-import org.kie.api.runtime.KieContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +14,15 @@ public class RuleTest {
 
     @Test
     public void test() {
-        KieServices kieServices = KieServices.Factory.get();
-        KieContainer kContainer = kieServices.getKieClasspathContainer();
+        Handler h = new Handler();
+        try {
+            h.handleRequest(null, null, null);
+            assertEquals(1, 1);
+        }
+        catch(IOException ex) {
+            LOG.error(ex.getMessage());
+            Assert.fail();
+        }
+        
     }
 }
