@@ -17,21 +17,20 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 
 public class Handler implements RequestStreamHandler {
-    protected final transient Logger logger = LoggerFactory.getLogger(getClass());
+
+    static final Logger LOG = LoggerFactory.getLogger(Handler.class);
 
     public Handler() {
-
-        
     }
 
     @Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
-        logger.info("Handler initialized");
-        KieServices kieServices = KieServices.get();
-        logger.info("kieServices = " + kieServices.toString());
-        KieContainer kContainer = kieServices.getKieClasspathContainer();
+        LOG.info("in handleRequest");
+        KieServices ks = KieServices.Factory.get();
+        LOG.info("kieServices = " + ks);
+        KieContainer kContainer = ks.getKieClasspathContainer();
         Results verifyResults = kContainer.verify();
         PricingRuleTemplateExample.execute( kContainer );
-        logger.info("handleRequest completed");
+        LOG.info("handleRequest completed");
     }
 }

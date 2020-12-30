@@ -65,7 +65,7 @@ This will create a .jar for the version specified in pom.xml of eligRules. Modif
 
 Explore the jar's contents with the jar command:
 
-```jar tvf target/eligRules-0.0.1-SNAPSHOT```
+```jar tvf target/lambda.jar```
 
 ### Deploy (package for AWS deployment):
 
