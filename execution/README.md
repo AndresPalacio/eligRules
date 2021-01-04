@@ -1,6 +1,6 @@
 # Elig Rules
 
-*A Drools-based library and framework to run eligibility rules*
+***A Drools-based executable which runs business rules.***
 
 ## This README consists of the following:
 1. System Requirements
@@ -34,6 +34,7 @@ This project is built with Maven. Dependencies can be viewed and modified in pom
 </parent>
 ```
 
+Execution depends on the presence and configuration of an Eligibility Rules API. A default API has been configured in the sibling directory, rules-repository. The API's configuration is encapsulated in {TBD - figure out how to best configure REST endpoints in Java...}.
 
 ## 3. Build, Test, Deploy
 
