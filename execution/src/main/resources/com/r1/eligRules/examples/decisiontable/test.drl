@@ -1,0 +1,10 @@
+package com.sample.model 
+
+rule "Is of valid age"
+when
+    $a := Person( age < 18 )  
+then
+$a.setShowBanner( false );
+end
+
+

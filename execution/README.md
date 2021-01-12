@@ -66,17 +66,22 @@ This will create a .jar for the version specified in pom.xml of eligRules. Modif
 
 Explore the jar's contents with the jar command:
 
-```jar tvf target/lambda.jar```
+```sh
+jar tvf target/lambda.jar
+```
 
 ### Deploy (package for AWS deployment):
 
-```mvn package shade:shade```
+```sh
+mvn package shade:shade
+```
 
 ***Configure your AWS account, set up an IAM, and configure your workspace on the aws console. Create at least one key-pair with rights to create, modify and execute a lambda (AWSLambda_FullAccess is about as high as you'd need). Then configure that key pair using aws configure.***
 
 TODO: clean this section up; for now just logging it... Run the following to update or create the lambda. Note that you'll have to replace the ARN, even if configured already (that's another TODO mentioned in the shell script):
 
 ```chmod 777 ./aws-deploy.sh```
+
 ```./aws-deploy.sh```
 
 
