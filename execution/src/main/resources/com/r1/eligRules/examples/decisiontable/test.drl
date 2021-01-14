@@ -1,8 +1,8 @@
 package com.r1.eligRules.examples.decisiontable 
 
-rule "Is of valid age"
+rule "null"
 when
-    $a := Person( 1 == 1 )  
+    $a := Person( age >= 18 )  
 then
 $a.setValid(true);System.out.println("done with rule");
 end

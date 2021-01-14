@@ -29,7 +29,7 @@ public class TestRuleGen {
         KieContainer kc = KieServices.Factory.get().getKieClasspathContainer();
         KieSession ksession = kc.newKieSession("TestKS");
         Person p = new Person();
-        p.setAge(25);
+        p.setAge(16);
         ksession.insert(p);
         System.out.println("fire all rules");
         ksession.fireAllRules();
@@ -47,10 +47,9 @@ public class TestRuleGen {
                 // .newImport().target("com.r1.eligRules.examples.decisiontable.Person").end()
 
                 .newRule()
-                .name("Is of valid age")
   
                 .lhs()
-                .pattern("Person").constraint("1 == 1")
+                .pattern("Person").constraint("age >= 18")
                 .id("$a", true).end()
                 .end()
                 

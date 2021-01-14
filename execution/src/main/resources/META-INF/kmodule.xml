@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
 
-    <kbase name="DecisionTableKB" packages="com.r1.eligRules.examples.decisiontable">
-        <ksession name="DecisionTableKS" type="stateless"/>
-    </kbase>
-
-    <kbase name="DTableWithTemplateKB" packages="com.r1.eligRules.examples.decisiontable-template">
-        <ruleTemplate dtable="com/r1/eligRules/examples/decisiontable-template/ExamplePolicyPricingTemplateData.xls"
-                      template="com/r1/eligRules/examples/decisiontable-template/BasePricing.drt"
-                      row="3" col="3"/>
-        <ruleTemplate dtable="com/r1/eligRules/examples/decisiontable-template/ExamplePolicyPricingTemplateData.xls"
-                      template="com/r1/eligRules/examples/decisiontable-template/PromotionalPricing.drt"
-                      row="18" col="3"/>
-        <ksession name="DTableWithTemplateKS"/>
-    </kbase>
-
     <kbase name="TestKB" packages="com.r1.eligRules.examples.decisiontable">
         <ksession name="TestKS" />
     </kbase>
