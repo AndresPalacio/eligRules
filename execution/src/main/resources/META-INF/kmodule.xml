@@ -15,4 +15,9 @@
         <ksession name="DTableWithTemplateKS"/>
     </kbase>
 
+    <kbase name="TestKB" packages="com.r1.eligRules.examples.decisiontable">
+        <ksession name="TestKS" />
+    </kbase>
+
+
 </kmodule>
