@@ -12,15 +12,23 @@
 
 Java (you may need to run as sudo or a super user):
 
-```apt install default-jre && default-jdk```
+```apt install default-jre default-jdk```
 
 Maven:
 
 ```apt install maven```
 
-If you want to use the AWS Lambda deployment:
+AWS:
 
-```apt install awscli```
+```sh
+apt install awscli
+```
+
+You will need to then configure to a user, using:
+
+```sh
+aws configure
+```
 
 ## 2. Dependencies:
 
@@ -84,4 +92,8 @@ TODO: clean this section up; for now just logging it... Run the following to upd
 
 ```./aws-deploy.sh```
 
+Single line compile and deployment:
 
+```sh
+mvn clean compile package shade:shade && ./aws-deploy.sh
+```
