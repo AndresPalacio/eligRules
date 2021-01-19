@@ -1,6 +1,6 @@
-# Rules Repository Service
+# Rule Generation Service
 
-*** An API for managing business rules. This compiles a set of rules to be consumed by the Drools rules engine.****
+*** An offline process that reads business rules from a repository, compiles them into Drools .drl files, and packages them into a jar.****
 
 ## This README consists of the following:
 1. System Requirements
@@ -24,13 +24,19 @@ Use documentation from [docs.mongodb.com](https://docs.mongodb.com) to install M
 
 ## 2. Dependencies
 
-TODO: define this later
+### MongoDB Collection:
+
+TODO - How to tie the rule to the below BOM sample...
+
+### Business Object Model Sample
+
+TODO - figure out what this means... what if there are a bunch?
 
 ## 3. Build, Test, Deploy
 
 ### Build
 
-```mvn compile```
+```mvn clean compile```
 
 ### Test
 
@@ -38,11 +44,25 @@ TODO: define this later
 
 ### Run a local execution
 
+Package this into a .jar because this is an offline process:
+
 ```sh
-mvn spring-boot:run
+mvn package
 ```
 
-Browse to [http://localhost:8080/](http://localhost:8080) and find your route. You can configure your route in application.properties with:
+
+This will create a .jar for the version specified in pom.xml of ruleGenService. Modify that version in the pom.xml section as shown:
+
+```xml
+<version>0.0.1-SNAPSHOT</version>
+
+To execute, use the jar with the version specified.
+```
+
+```sh
+java -jar target/ruleGenService-0.0.1-SNAPSHOT.jar
+```
+
 
 ```server.port=8080```
 
