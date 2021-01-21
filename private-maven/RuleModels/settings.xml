@@ -1,0 +1,9 @@
+<settings>
+    <servers>
+    <server>
+        <id>maven-repo-rule-models</id>
+        <username>${iam-user-access-key-id}</username>
+        <password>${iam-user-secret-key}</password>
+    </server>
+    </servers>
+</settings>

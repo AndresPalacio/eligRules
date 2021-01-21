@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.r1</groupId>
+  <artifactId>RuleModels</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Rule Models</name>
+  <description>A private Repository of POJOs to be referenced by multiple libraries.</description>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>com.github.platform-team</groupId>
+        <artifactId>aws-maven</artifactId>
+        <version>6.0.0</version>
+      </extension>
+    </extensions>
+  </build>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>maven-repo-rule-models</id>
+      <url>s3://maven-repo-rule-models</url>
+    </snapshotRepository>
+    <repository>
+      <id>maven-repo-rule-models</id>
+      <url>s3://maven-repo-rule-models/release</url>
+    </repository>
+  </distributionManagement>
+
+</project>
