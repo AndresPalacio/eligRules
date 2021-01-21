@@ -18,10 +18,15 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 
+import com.r1.r1RuleModels.R1Rule;
+
 public class Main {
 
     public static final void main(String[] args) {
-        System.out.println("hello world");
+
+        R1Rule r = new R1Rule();
+        r.ruleName = "hello world";
+        System.out.println(r.ruleName);
 
         // connect to rulesRepo
         MongoClient mongoClient = new MongoClient("localhost", 27017);

@@ -2,6 +2,11 @@
 
 *** A private Maven Repository of POJOs to be referenced by multiple libraries, which will be hosted on Amazon S3 ***
 
-TODO: all the things
+## Install (local maven repo)
 
-mvn --settings settings.xml clean compile deploy
+mvn clean compile install
+
+
+## Deploy
+
+TODO: figure out how to deploy to S3 or Artifactory

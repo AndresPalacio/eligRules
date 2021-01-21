@@ -1,6 +1,10 @@
-package com.r1.ruleModels;
+package com.r1.r1RuleModels;
 
-class Rule {
+/*
+A business rule entity.
+*/
+
+public class R1Rule {
     public String ruleName;
     public String condition;
     public String object;
