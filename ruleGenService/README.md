@@ -44,14 +44,13 @@ TODO - figure out what this means... what if there are a bunch?
 
 ### Run a local execution
 
-Package this into a .jar because this is an offline process:
+Package this into a .jar because this is an offline process. Use the shade plugin to include all the right jars:
 
 ```sh
-mvn package
+mvn package shade:shade
 ```
 
-
-This will create a .jar for the version specified in pom.xml of ruleGenService. Modify that version in the pom.xml section as shown:
+This will create a .jar for the version specified in pom.xml of ruleGenService. Modify that version in the pom.xml section as shown below to change the version:
 
 ```xml
 <version>0.0.1-SNAPSHOT</version>

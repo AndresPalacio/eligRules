@@ -24,6 +24,14 @@
   </properties>
 
   <dependencies>
+    <!-- mongo driver -->
+    <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver</artifactId>
+        <version>3.4.3</version>
+    </dependency>
+
+    <!-- all the drooles & kie stuff -->
     <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-api</artifactId>
