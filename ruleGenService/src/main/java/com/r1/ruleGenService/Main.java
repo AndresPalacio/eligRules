@@ -1,42 +1,53 @@
 package com.r1.ruleGenService;
 
+import org.bson.Document;
 import org.drools.compiler.lang.DrlDumper;
 import org.drools.compiler.lang.api.DescrFactory;
 import org.drools.compiler.lang.api.PackageDescrBuilder;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
-import org.kie.api.builder.Message;
-import org.kie.api.builder.Results;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mongodb.MongoClient;
-
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 
 public class Main {
 
     public static final void main(String[] args) {
         System.out.println("hello world");
 
-        // get rules from mongo into the RuleRepo
+        // connect to rulesRepo
         MongoClient mongoClient = new MongoClient("localhost", 27017);
-        mongoClient.getDatabaseNames().forEach(System.out::println);
-        long docs = mongoClient.getDatabase("rulesRepo").getCollection("rule").count();
-        System.out.println("# docs = " + docs);
+        MongoCollection<Document> coll = mongoClient.getDatabase("rulesRepo").getCollection("rule");
 
+        // collect the rules in a list
+        List<Document> rules = new ArrayList<Document>();
+        try (MongoCursor<Document> cursor = coll.find().iterator()) {
+            while (cursor.hasNext()) {
+                rules.add(cursor.next());
+            }
+        }
 
         mongoClient.close();
 
-        // generate a file for each rule
+        // add a rule file for each rule
+        rules.forEach(doc -> {
+            addRule(doc);
+        });
         
-
-        // compile those files into something that the lambda can use
+        // compile those files together (TBD - how do we do this?)
     }
 
-    private static void addRule(KieFileSystem kieFileSystem) {
+    private static void addRule(Document rule) {
+        KieFileSystem kfs = KieServices.Factory.get().newKieFileSystem();
+
         PackageDescrBuilder packageDescrBuilder = DescrFactory.newPackage();
     
     
@@ -45,13 +56,14 @@ public class Main {
                 // .newImport().target("com.r1.eligRules.examples.decisiontable.Person").end()
 
                 .newRule()
+                .name(rule.get("ruleName").toString())
   
                 .lhs()
-                .pattern("Person").constraint("age >= 18")
+                .pattern(rule.get("object").toString()).constraint(rule.get("condition").toString())
                 .id("$a", true).end()
                 .end()
                 
-                .rhs("$a.setValid(true);System.out.println(\"done with rule\");")
+                .rhs("$a.setValid(true);")
                 .end();
 
     
@@ -59,21 +71,19 @@ public class Main {
     
         try{
           // create new file
-          File file = new File("src/main/resources/com/r1/eligRules/examples/decisiontable/test.drl");
+          File file = new File(String.format("src/main/resources/%s.drl", 
+                        rule.get("ruleName").toString().replace(' ', '-')));
           file.createNewFile();
           FileWriter fw = new FileWriter(file.getAbsoluteFile());
           BufferedWriter bw = new BufferedWriter(fw);
           bw.write(rules);
-          // close connection
-          bw.close();
-          System.out.println("Rule Created Successfully");
 
-          KieBuilder kieBuilder = KieServices.Factory.get().newKieBuilder(kieFileSystem);
-          System.out.println("build all rules");
+          // close file connection
+          bw.close();
+
+          // build the rules (TODO - use the builder to determine if there are errors)
+          KieBuilder kieBuilder = KieServices.Factory.get().newKieBuilder(kfs);
           kieBuilder.buildAll();
-          Results results = kieBuilder.getResults();
-          System.out.println("builder has messages = " + results.hasMessages(Message.Level.ERROR));
-          System.out.println("builder results are  = " + results.getMessages());
        }catch(Exception e){
            System.out.println(e);
        }
