@@ -1,0 +1,12 @@
+package com.r1.eligRules 
+
+import com.r1.r1RuleModels.*
+
+rule "old enough for medicare"
+when
+    a := Person( age >=65 )  
+then
+a.setValid(true);
+end
+
+

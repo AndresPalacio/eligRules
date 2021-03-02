@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gson.GsonBuilder;
-import com.r1.eligRules.examples.decisiontable.Person;
+import com.r1.r1RuleModels.Person;
 
 import org.junit.Test;
 import org.slf4j.Logger;

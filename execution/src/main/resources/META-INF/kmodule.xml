@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
 
-    <kbase name="TestKB" packages="com.r1.eligRules.examples.decisiontable">
+    <kbase name="TestKB" packages="com.r1.eligRules">
         <ksession name="TestKS" />
     </kbase>
 

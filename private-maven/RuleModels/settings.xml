@@ -1,0 +1,9 @@
+<settings>
+<servers>
+  <server>
+    <id>maven-repo-rule-models</id>
+    <username>{aws-user-id}</username>
+    <password>{aws-password}</password>
+  </server>
+</servers>
+</settings>

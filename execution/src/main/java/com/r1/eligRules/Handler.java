@@ -1,7 +1,5 @@
 package com.r1.eligRules;
 
-import com.r1.eligRules.examples.decisiontable.*;
-
 import java.util.Map;
 
 import org.kie.api.KieServices;
@@ -13,6 +11,8 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import com.r1.r1RuleModels.Person;
 
 public class Handler implements RequestHandler<Map<String,String>, String> {
 

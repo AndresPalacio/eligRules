@@ -94,6 +94,6 @@ spring.data.mongodb.password=secret
 
 ### Deploy (package for deployment):
 
-```mvn package```
+```mvn package shade:shade```
 
 TODO: learning on spring + war deployment.

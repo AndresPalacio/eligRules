@@ -79,6 +79,13 @@
         <version>2.8.6</version>
     </dependency>
 
+    <!-- r1 dependencies -->
+    <dependency>
+      <groupId>com.r1</groupId>
+      <artifactId>r1RuleModels</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
 
 </dependencies>
     <build>

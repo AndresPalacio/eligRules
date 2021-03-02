@@ -18,13 +18,13 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 
-import com.r1.r1RuleModels.R1Rule;
+import com.r1.r1RuleModels.*;
 
 public class Main {
 
     public static final void main(String[] args) {
 
-        R1Rule r = new R1Rule();
+        com.r1.r1RuleModels.R1Rule r = new com.r1.r1RuleModels.R1Rule();
         r.ruleName = "hello world";
         System.out.println(r.ruleName);
 
@@ -57,18 +57,17 @@ public class Main {
     
     
         packageDescrBuilder
-                .name("com.r1.eligRules.examples.decisiontable")
-                // .newImport().target("com.r1.eligRules.examples.decisiontable.Person").end()
-
+                .name("com.r1.eligRules")
+                .newImport().target("com.r1.r1RuleModels.*").end()
                 .newRule()
                 .name(rule.get("ruleName").toString())
   
                 .lhs()
                 .pattern(rule.get("object").toString()).constraint(rule.get("condition").toString())
-                .id("$a", true).end()
+                .id("a", true).end()
                 .end()
                 
-                .rhs("$a.setValid(true);")
+                .rhs("a.setValid(true);")
                 .end();
 
     
@@ -79,7 +78,7 @@ public class Main {
           File file = new File(String.format("src/main/resources/%s.drl", 
                         rule.get("ruleName").toString().replace(' ', '-')));
           file.createNewFile();
-          FileWriter fw = new FileWriter(file.getAbsoluteFile());
+          FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
           BufferedWriter bw = new BufferedWriter(fw);
           bw.write(rules);
 

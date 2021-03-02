@@ -46,6 +46,18 @@ Execution depends on the presence and configuration of an Eligibility Rules API.
 
 ## 3. Build, Test, Deploy
 
+***Before building, copy rules over from the ruleGenService. This is very hacky for now; will eventually pull from S3 or some cloud storage, vs. pulling from the project.***
+
+```chmod 777 ./get-generated-rule-files.sh```
+
+```./get-generated-rule-files.sh```
+
+Single line compile and deployment:
+
+```sh
+mvn clean compile package shade:shade && ./aws-deploy.sh
+```
+
 ### Build
 
 ```mvn compile```

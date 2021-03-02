@@ -1,6 +1,6 @@
 # Rules Repository Service
 
-*** An API for managing business rules. This compiles a set of rules to be consumed by the Drools rules engine.****
+*** An API for managing business rules. This compiles a set of rules to be consumed by the Drools rules engine.***
 
 ## This README consists of the following:
 1. System Requirements
@@ -42,7 +42,12 @@ TODO: define this later
 mvn spring-boot:run
 ```
 
-Browse to [http://localhost:8080/](http://localhost:8080) and find your route. You can configure your route in application.properties with:
+Browse to [http://localhost:8080/](http://localhost:8080) and find your route. 
+
+Example:
+http://localhost:8080/rules will list all the rules in your collection.
+
+You can configure your route in application.properties with:
 
 ```server.port=8080```
 

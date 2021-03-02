@@ -1,0 +1,12 @@
+package com.r1.eligRules 
+
+import com.r1.r1RuleModels.*
+
+rule "over-18"
+when
+    a := Person( age >= 18 )  
+then
+a.setValid(true);
+end
+
+

@@ -1,4 +1,4 @@
-package com.r1.eligRules.examples.decisiontable;
+package com.r1.r1RuleModels;
 
 public class Person {
 
